@@ -21,7 +21,7 @@ sendBtn.onclick = function () {
         let response = `
         <div class="chat response">
             <img src="images/profile-pic.png">
-            <span class="new">...</span>
+            <span class="new">thinking...</span>
         </div>`;
 
         messageBox.insertAdjacentHTML("beforeend", message);
@@ -35,7 +35,7 @@ sendBtn.onclick = function () {
                     "Authorization": `Bearer ${API_KEY}`
                 },
                 body: JSON.stringify({
-                    "model": "mistral-tiny",  // Use "mistral-small" or "mistral-medium" for better responses
+                    "model": "mistral-medium",  // Use "mistral-small" or "mistral-medium" for better responses
                     "messages": [
                         { "role": "system", "content": "You are a helpful assistant." },
                         { "role": "user", "content": UserTypedMessage }
