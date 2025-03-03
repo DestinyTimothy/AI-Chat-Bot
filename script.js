@@ -20,7 +20,7 @@ sendBtn.onclick = function () {
 
         let response = `
         <div class="chat response">
-            <img src="images/profile-pic.png">
+            <img src="images/ai-profile-pic.png">
             <span class="new">thinking...</span>
         </div>`;
 

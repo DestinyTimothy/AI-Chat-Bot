@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dexter-AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght@20..48,100..700,0..1,-50..200&icon_names=send" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background-color: #000000;
+        }
+
+        .header {
+            color: white;
+            padding: 20px 0px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .chat {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 300;
+            align-items: center;
+        }
+
+        .chat img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+
+        .response {
+            background-color: #330f96;
+            border-radius: 10px;
+            padding: 10px;
+            max-width: 60%;
+        }
+
+        .message {
+            background-color: #192153;
+            border-radius: 10px;
+            padding: 10px;
+            max-width: 60%;
+            margin-left: auto;
+            border: 1px solid #4A90E2;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .message img {
+            order: 2;
+        }
+
+        .messagebar {
+            position: fixed;
+            bottom: 0;
+            height: 5rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid #494b59;
+            background-color: #000000;
+            outline: none;
+        }
+
+        .messagebar .bar-wrapper {
+            background-color: #192153;
+            border: 5px;
+            width: 60vw;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 50px;
+        }
+
+        .bar-wrapper input {
+            width: 100%;
+            padding: 5px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            background: none;
+            color: #ccc;
+        }
+
+        .bar-wrapper input::placeholder {
+            color: #ccc;
+        }
+
+        .messagebar button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .message-box {
+            height: calc(100vh - 5rem);
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Dexter-AI ⚙</h1>
+    </div>
+    <div class="chatbox-wrapper">
+        <div class="message-box">
+            <div class="chat response">
+                <img src="images/ai-profile-pic.png">
+                <span>Hi, I'm Dexter-AI! Let's talk, what's up?</span>
+            </div>
+        </div>
+        <div class="messagebar">
+            <div class="bar-wrapper">
+                <input type="text" id="messageInput" placeholder="Talk to me...">
+                <button id="sendBtn">
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const messageBar = document.querySelector("#messageInput");
+        const sendBtn = document.querySelector("#sendBtn");
+        const messageBox = document.querySelector(".message-box");
+
+        sendBtn.onclick = function () {
+            if (messageBar.value.trim() !== "") {
+                const userMessage = messageBar.value;
+                messageBar.value = "";
+
+                let message = `
+                <div class="chat message">
+                    <span>${userMessage}</span>
+                    <img src="images/Anon-pic.png">
+                </div>`;
+
+                messageBox.insertAdjacentHTML("beforeend", message);
+                messageBox.scrollTop = messageBox.scrollHeight; // Smooth scroll to bottom
+            }
+        };
+    </script>
+</body>
+</html>
